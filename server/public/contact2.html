@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>weedHUB</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/js/jquery.min.js">
+    <link rel="stylesheet" href="/js/popper.js">
+    <link rel="stylesheet" href="/js/bootstrap.min.js" >   
+    
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    
+         
+
+    
+  </head>
+  <body>
+  
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Cargando....</span>
+    </div>
+  </div>
+
+  <div class="site-wrap">
+
+    
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    
+    
+  
+    <div class="site-blocks-cover inner-page overlay" style="background-image: url(images/hero_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-5 text-center" data-aos="fade">
+          <h1 class="text-uppercase">Mediciones</h1>
+          <span class="caption d-block text-white"><a href="#"></a></span>
+        </div>
+      </div>
+    </div>  
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <canvas width="250" height="150" id="myCanvas"> </canvas>
+          
+          
+          
+        </div>
+        <div class="col-sm">
+          <canvas width="250" height="150" id="myCanvas1"> </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <canvas width="250" height="150" id="myCanvas2"> </canvas>
+        </div>
+        <div class="col-sm">
+          <canvas width="250" height="150" id="myCanvas3"> </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+        <h2>Control De Iluminación</h2>
+      
+          <button type="button" class="btn btn-success"  id="encenderl">Encendida</button>
+       
+        
+        <button type="button" class="btn btn-danger"  id="apagarl">Apagada</button>
+    </div>
+      <div class="col-sm"><h2>Control de refigeracion</h2>
+        <button type="button" class="btn btn-success" id="encenderr">Encendida</button>
+        <button type="button" class="btn btn-danger" id="apagarr">Apagada</button>
+    </div>
+    <div class="col-sm"><h2>Control de calefacción</h2>
+      <button type="button" class="btn btn-success" id="encenderc">Encendida</button>
+      <button type="button" class="btn btn-danger" id="apagarc">Apagada</button>
+  </div>
+      <div class="col-sm"><h2>Modo de uso</h2>
+        <button type="button" class="btn btn-warning" id="manual">Manual</button>
+        <button type="button" class="btn btn-info" id="auto">Automatico</button>
+      </div>
+    </div>
+
+
+
+
+
+    <footer class="site-footer bg-dark">
+      <div class="container">
+        
+
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h3 class="footer-heading mb-4 text-white">Acerca de nosotros</h3>
+            <p>somos dos socios estudiantes de ingenieria de sistemas con un proyecto sasado en arduino y en node js.</p>
+            <p><a href="#" class="btn btn-primary text-white px-4">Leer más</a></p>
+          </div>
+          <div class="col-md-5 mb-4 mb-md-0 ml-auto">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h3 class="footer-heading mb-4 text-white">Menu</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Acerca de nosotros</a></li>
+                  
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">testimonios</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-6">
+                <h3 class="footer-heading mb-4 text-white">Acerca de nuestra pagina</h3>
+                  <ul class="list-unstyled">
+                    <li><a href="#">HTML5 / CSS3</a></li>
+                    <li><a href="#">Diseño limpio</a></li>
+                    <li><a href="#">Responsive</a></li>
+                    <li><a href="#">Node js</a></li>
+                  </ul>
+              </div>
+            </div>
+
+            <div class="row mb-5">
+              <div class="col-md-12">
+              <h3 class="footer-heading mb-4 text-white">Mantente informado</h3>
+              <form action="#" class="d-flex footer-subscribe">
+                <input type="text" class="form-control rounded-0" placeholder="Ingrese su correo">
+                <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
+              </form>
+            </div>
+            </div>
+          </div>
+
+          
+          <div class="col-md-2">
+            
+            <div class="row">
+            <div class="col-md-12"><h3 class="footer-heading mb-4 text-white">Redes sociales</h3></div>
+              <div class="col-md-12">
+                <p>
+                  <a href="#" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
+                  <a href="#" class="p-2"><span class="icon-twitter"></span></a>
+                  <a href="#" class="p-2"><span class="icon-instagram"></span></a>
+                  <a href="#" class="p-2"><span class="icon-vimeo"></span></a>
+
+                </p>
+              </div>
+          </div>
+          </div>
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            
+
+            
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <script>
+
+//console.log('Client-side code running');
+
+const button = document.getElementById('encenderl');
+button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+
+  fetch('/clicked', {method: 'POST'})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('Click was recorded');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+
+
+  </script>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/main.js"></script>
+
+  <script>
+    const socket =io();
+
+    let counter= 0;
+    socket.on('arduino:data', function(dataSerial) { 
+        console.log(dataSerial);
+        myChart.data.labels.push(counter);
+        myChart.data.datasets.forEach(dataset => {
+           dataset.data.push(dataSerial.value);                  
+        });  
+    counter=counter+5;
+
+    myChart.update();
+        
+    });
+        var ctx = document.getElementById('myCanvas').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Tiempo'],
+                datasets: [{
+                    label:"Humedad",
+                    backgroundColor:'rgba(58, 234, 33, 0.2)',
+                    borderColor: 'rgba(6, 6, 6)',
+                    data: []
+
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+
+</script>
+
+
+
+
+
+
+
+<script>
+ 
+
+  let counter1= 0;
+  socket.on('arduino:data1', function(dataSerial) { 
+      console.log(dataSerial);
+      myChart1.data.labels.push(counter1);
+      myChart1.data.datasets.forEach(dataset => {
+         dataset.data.push(dataSerial.value);                  
+      });  
+  counter1=counter1+5;
+
+  myChart1.update();
+      
+  });
+      var ctx = document.getElementById('myCanvas1').getContext('2d');
+      var myChart1 = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['Tiempo'],
+              datasets: [{
+                  label:"Temperatura",
+                  backgroundColor:'rgba(235, 25, 33, 0.2)',
+                  borderColor: 'rgba(6, 6, 6)',
+                  data: []
+
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+
+
+</script>
+
+
+
+
+<script>
+  
+
+  let counter2= 0;
+  socket.on('arduino:data2', function(dataSerial) { 
+      console.log(dataSerial);
+      myChart2.data.labels.push(counter2);
+      myChart2.data.datasets.forEach(dataset => {
+         dataset.data.push(dataSerial.value);                  
+      });  
+  counter2=counter2+5;
+
+  myChart2.update();
+      
+  });
+      var ctx = document.getElementById('myCanvas2').getContext('2d');
+      var myChart2 = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['Tiempo'],
+              datasets: [{
+                  label:"Tamaño planta",
+                  backgroundColor:'rgba(229, 235, 35, 0.2)',
+                  borderColor: 'rgba(6, 6, 6)',
+                  data: []
+
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+
+
+</script>
+
+
+<script>
+  
+
+  let counter3= 0;
+  socket.on('arduino:data3', function(dataSerial) { 
+      console.log(dataSerial);
+      myChart3.data.labels.push(counter3);
+      myChart3.data.datasets.forEach(dataset => {
+         dataset.data.push(dataSerial.value);                  
+      });  
+  counter3=counter3+5;
+
+  myChart3.update();
+      
+  });
+      var ctx = document.getElementById('myCanvas3').getContext('2d');
+      var myChart3 = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['Tiempo'],
+              datasets: [{
+                  label:"Humedad tierra",
+                  backgroundColor:'rgba(120, 100, 35, 0.2)',
+                  borderColor: 'rgba(6, 6, 6)',
+                  data: []
+
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+
+
+</script>
+
+
+
+
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button = document.getElementById('encenderl');
+  button.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button1 = document.getElementById('apagarl');
+  button1.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked1', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button2 = document.getElementById('encenderr');
+  button2.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked2', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button3 = document.getElementById('apagarr');
+  button3.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked3', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button4 = document.getElementById('encenderc');
+  button4.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked4', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button5 = document.getElementById('apagarc');
+  button5.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked5', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+
+
+<script>
+
+  //console.log('Client-side code running');
+  
+  const button6 = document.getElementById('auto');
+  button6.addEventListener('click', function(e) {
+    console.log('button was clicked');
+  
+    fetch('/clicked6', {method: 'post'})
+      .then(function(response) {
+        if(response.ok) {
+          console.log('Click was recorded');
+          return;
+        }
+        throw new Error('Request failed.');
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  
+  });
+  
+  
+  
+    </script>
+
+
+
+  </body>
+</html>

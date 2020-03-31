@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto weedhub arduino with node.js</title>
+</head>
+<body>
+    <h1>Proyect weedhub with arduino and node</h1>
+    <canvas id="myCanvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket =io();
+
+        let counter= 0;
+        socket.on('arduino:data', function(dataSerial) { 
+            console.log(dataSerial);
+            myChart.data.labels.push(counter);
+            myChart.data.datasets.forEach(dataset => {
+               dataset.data.push(dataSerial.value);                  
+            });  
+        counter++;
+
+        myChart.update();
+            
+        });
+            var ctx = document.getElementById('myCanvas').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Serial'],
+                    datasets: [{
+                        label:"Serial",
+                        backgroundColor:'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(41, 128, 186)',
+                        data: []
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+
+    </script>
+    
+</body>
+</html>
